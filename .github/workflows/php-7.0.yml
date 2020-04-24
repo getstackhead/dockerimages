@@ -2,7 +2,7 @@ name: Publish PHP 7.0 image
 
 env:
   IMAGE_NAME: php
-  VERSION:    7.0
+  VERSION:    "7.0"
 
 on:
   push:
