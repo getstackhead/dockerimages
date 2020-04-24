@@ -1,4 +1,4 @@
-# StackHead Docker image
+# StackHead Docker images repository
 
 The Docker images provided in this repository supply user configuration.
 All containers have a user and group named **stackhead** with id **1412**.
