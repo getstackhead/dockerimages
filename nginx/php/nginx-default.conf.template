@@ -1,0 +1,27 @@
+server {
+    listen 80;
+    server_name _; # catch all
+    root /var/www/${NGINX_PUBLIC_DIRECTORY};
+
+    index index.php;
+
+    # resolve to Docker host
+    resolver 127.0.0.11 valid=30s;
+
+    location / {
+       # This is cool because no php is touched for static content.
+       # include the "?$args" part so non-default permalinks doesn't break when using query string
+       try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+        set $upstream ${DOCKER_PROXY_SERVICE_NAME}:${DOCKER_PROXY_SERVICE_PORT};
+
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass    $upstream;
+        fastcgi_index   index.php;
+        fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include         fastcgi_params;
+        fastcgi_param   PATH_INFO $fastcgi_path_info;
+    }
+}
