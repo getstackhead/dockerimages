@@ -4,7 +4,7 @@ This image allows configuring the public path, which is served by Nginx, and the
 service and port that receives the traffic.
 
 * Docker Registry: [getstackhead/nginx](https://hub.docker.com/repository/docker/getstackhead/nginx)
-* GitHub Registry: [docker.pkg.github.com/getstackhead/dockerimages/nginx](...)
+* GitHub Registry: [docker.pkg.github.com/getstackhead/dockerimages/nginx](https://github.com/getstackhead/dockerimages/packages/203850)
 
 ## Configuration
 
