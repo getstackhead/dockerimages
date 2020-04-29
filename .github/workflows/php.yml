@@ -1,0 +1,55 @@
+name: Publish PHP images
+
+env:
+  IMAGE_NAME: php
+
+on:
+  push:
+    branches:
+      - master
+    paths: 
+      - php/
+      - .github/workflows/php.yml
+
+
+jobs:
+  push:
+    strategy:
+      matrix:
+        version: ["7.0", "7.1", "7.2", "7.3", "7.4"]
+    # Jobs should be the same for every workflow in this repository
+    # They are configured via ENV variables above and should not be altered in other ways!
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: docker build ./$IMAGE_NAME/${{ matrix.version }}/ --tag image
+      - name: Push image to GitHub registry
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+          
+          # Change all uppercase to lowercase
+          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+
+          docker tag image $IMAGE_ID:${{ matrix.version }}
+          docker push $IMAGE_ID:${{ matrix.version }}
+      - name: Push image to Docker registry
+        run: |
+          echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
+          IMAGE_ID=getstackhead/$IMAGE_NAME
+
+          # Change all uppercase to lowercase
+          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+
+          docker tag image $IMAGE_ID:${{ matrix.version }}
+          docker push $IMAGE_ID:${{ matrix.version }}
+  updateDocs: # update readme on DockerHub
+    runs-on: ubuntu-latest
+    steps:
+      - uses: meeDamian/sync-readme@v1.0.6
+        with:
+          user: ${{ secrets.DOCKER_USER }}
+          pass: ${{ secrets.DOCKER_PASSWORD }}
+          slug: getstackhead/${{ env.IMAGE_NAME }}
+          readme: ./${{ env.IMAGE_NAME }}/README.md
