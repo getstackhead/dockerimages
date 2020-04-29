@@ -9,7 +9,7 @@ on:
     branches:
       - master
     paths: 
-      - php/7.1/
+      - php/7.1/**
       - .github/workflows/php-7.1.yml
 
 # Jobs should be the same for every workflow in this repository

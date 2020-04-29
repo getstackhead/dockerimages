@@ -9,7 +9,7 @@ on:
     branches:
       - master
     paths: 
-      - nginx/php/
+      - nginx/php/**
       - .github/workflows/nginx-php.yml
 
 # Jobs should be the same for every workflow in this repository
