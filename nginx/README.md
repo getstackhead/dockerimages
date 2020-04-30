@@ -48,7 +48,7 @@ services:
     volumes:
       - .:/var/www # Nginx serves /var/www/$NGINX_PUBLIC_DIRECTORY
     links:
-      - php
+      - phpfpm
   phpfpm:
     image: php:7.4-fpm
     # ...
@@ -70,7 +70,7 @@ deployment:
         volumes_from:
           - data
         links:
-          - php
+          - phpfpm
       - name: phpfpm
         image: php:7.4-fpm
         # ... more configuration here...
