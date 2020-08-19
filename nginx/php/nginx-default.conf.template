@@ -3,7 +3,7 @@ server {
     server_name _; # catch all
     root /var/www/${NGINX_PUBLIC_DIRECTORY};
 
-    index index.html;
+    index index.php;
 
     # resolve to Docker host
     resolver 127.0.0.11 valid=30s;
