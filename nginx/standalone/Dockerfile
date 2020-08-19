@@ -1,4 +1,4 @@
-FROM nginx:1.18.0-alpine
+FROM nginx:1.19.2-alpine
 
 VOLUME /var/www
 COPY nginx-default.conf.template /etc/nginx/conf.d/default.conf.template
