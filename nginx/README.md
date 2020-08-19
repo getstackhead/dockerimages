@@ -21,6 +21,8 @@ The default values for those vary by image (see below).
 
 The tags describe which files Nginx can process and forward to the respective service.
 
+* standalone ([Dockerfile](./standalone/Dockerfile))
+  * NGINX_PUBLIC_DIRECTORY=html
 * php ([Dockerfile](./php/Dockerfile))
   * DOCKER_PROXY_SERVICE_NAME=php
   * DOCKER_PROXY_SERVICE_PORT=9000
