@@ -1,4 +1,4 @@
-FROM php:7.2.33-fpm-alpine
+FROM php:7.2.34-fpm-alpine
 LABEL maintainer="mario.lubenka@googlemail.com"
 
 RUN addgroup -g 1412 stackhead
