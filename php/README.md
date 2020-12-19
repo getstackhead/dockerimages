@@ -18,6 +18,7 @@ Each tag relates to the PHP-FPM version used in the image.
 * 7.2 ([Dockerfile](./7.2/Dockerfile))
 * 7.3 ([Dockerfile](./7.3/Dockerfile))
 * 7.4 ([Dockerfile](./7.4/Dockerfile))
+* 8.0 ([Dockerfile](./8.0/Dockerfile))
 
 ## Example usage
 
