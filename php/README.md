@@ -13,8 +13,6 @@ If you're using those images as base image, make sure to switch back to "stackhe
 
 Each tag relates to the PHP-FPM version used in the image.
 
-* 7.0 ([Dockerfile](./7.0/Dockerfile))
-* 7.1 ([Dockerfile](./7.1/Dockerfile))
 * 7.2 ([Dockerfile](./7.2/Dockerfile))
 * 7.3 ([Dockerfile](./7.3/Dockerfile))
 * 7.4 ([Dockerfile](./7.4/Dockerfile))
