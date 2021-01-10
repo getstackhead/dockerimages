@@ -1,5 +1,5 @@
 server {
-    listen 80;
+    listen ${NGINX_LISTEN_PORT};
     server_name _; # catch all
     root /var/www/${NGINX_PUBLIC_DIRECTORY};
 

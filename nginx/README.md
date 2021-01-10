@@ -23,10 +23,12 @@ The tags describe which files Nginx can process and forward to the respective se
 
 * standalone ([Dockerfile](./standalone/Dockerfile))
   * NGINX_PUBLIC_DIRECTORY=html
+  * NGINX_LISTEN_PORT=8080
 * php ([Dockerfile](./php/Dockerfile))
   * DOCKER_PROXY_SERVICE_NAME=php
   * DOCKER_PROXY_SERVICE_PORT=9000
   * NGINX_PUBLIC_DIRECTORY=html
+  * NGINX_LISTEN_PORT=8080
 
 ## Example usage
 
